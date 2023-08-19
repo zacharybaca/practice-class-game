@@ -40,8 +40,21 @@ class World {
         // Instantiate items using data stored in the itemList variable
             // A non-food item should be instantiated as an instance of the `Item` class
             // A food item should be instantiated as an instance of the `Food` class
-
         // Your code here
+
+        for (let i = 0; i < itemList.length; i++) {
+            let worldRoom = this.rooms[itemList[i].room];
+            console.log(worldRoom.items)
+            let item = itemList[i];
+            if (item.isFood) {
+                item = new Food(item.name, item.description);
+                worldRoom.items.push(item);
+            } else {
+                item = new Item(item.name, item.description);
+                worldRoom.items.push(item);
+            }
+
+        }
     }
 }
 
