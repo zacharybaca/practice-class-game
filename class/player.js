@@ -35,17 +35,23 @@ class Player {
 
     takeItem(itemName) {
         // Picks up an item from the current room into the player's inventory
+        const item = this.currentRoom.getItemByName(itemName);
 
-        if (this.currentRoom.items.includes(itemName)) {
-            this.items.push(itemName);
-            this.currentRoom.items.splice(itemName, 1);
+        if (item) {
+            this.items.push(item);
+            this.currentRoom.items.splice(this.currentRoom.items.indexOf(item), 1)
         }
     }
 
     dropItem(itemName) {
         // Drops an item the player is holding into their current room
         // Your code here
+         const item = this.items.find(item => item.name === itemName);
 
+         if (item) {
+            this.currentRoom.items.push(item);
+            this.items.splice(this.items.indexOf(item), 1);
+         }
     }
 
     eatItem(itemName) {
