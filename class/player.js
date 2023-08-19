@@ -38,19 +38,14 @@ class Player {
 
         if (this.currentRoom.items.includes(itemName)) {
             this.items.push(itemName);
-            console.log(itemName)
-        } else {
-            console.log(itemName);
-            console.log(`Sorry, ${itemName} is not available in this room. Please pick a different item.`)
+            this.currentRoom.items.splice(itemName, 1);
         }
     }
 
     dropItem(itemName) {
         // Drops an item the player is holding into their current room
         // Your code here
-        if (this.items.includes(itemName)) {
 
-        }
     }
 
     eatItem(itemName) {
@@ -62,11 +57,7 @@ class Player {
     getItemByName(name) {
         // Retrieves an item from a player's inventory by item name
         // Your code here
-        if (this.items.includes(name)) {
-            return name;
-        } else {
-            throw new Error(`Sorry, ${name} is currently not available in your inventory. Please select a different item.`)
-        }
+        return this.items.find(item => item.name === name);
     }
 }
 

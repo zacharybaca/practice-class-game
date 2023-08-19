@@ -47,11 +47,7 @@ class Room {
     getItemByName(name) {
         // Retrieves an item from a room by item name
         // Your code here
-        if (this.items.includes(name)) {
-            return name;
-        } else {
-            console.log(`${name} does not exist. Please try again.`)
-        }
+        return this.items.find(item => item.name === name);
     }
 
 }
